@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(8, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    text-align: center;
+}
+
+.container div {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+}
+.titel{
+    text-align: center;
+    font-size: 90px;
+}
+body{
+    background-color: #DE3C4B 
+}
