@@ -1,39 +1,66 @@
 // Selecteer alle kaarten
 const cards = document.querySelectorAll('.card');
-let flippedCards = []; // Array om de omgedraaide kaarten bij te houden
 
-cards.forEach(card => {
-  card.addEventListener('click', function() {
-    // Controleer of de kaart al omgedraaid is of al in de flippedCards array zit, of als er al twee kaarten zijn omgedraaid
-    if (
-      this.classList.contains('flipped') ||
-      flippedCards.includes(this) ||
-      flippedCards.length === 2
-    ) {
-      return; // Stop de functie als de kaart al omgedraaid is of als er al twee kaarten zijn omgedraaid
-    }
+let flippedCard = false;
+let lockBoard = false;
+let firstCard, secondCard;
 
-    this.classList.add('flipped'); // Voeg de "flipped" class toe aan de geklikte kaart
-    flippedCards.push(this); // Voeg de geklikte kaart toe aan de flippedCards array
+function flipCard() {
+  if (lockBoard) return;
+  if (this === firstCard) return;
 
-    // Controleer of er twee kaarten zijn omgedraaid
-    if (flippedCards.length === 2) {
-      // Controleer of de afbeeldingen van de twee omgedraaide kaarten hetzelfde zijn
-      if (
-        flippedCards[0].querySelector('img').src ===
-        flippedCards[1].querySelector('img').src
-      ) {
-        // De kaarten vormen een match, laat ze omgedraaid staan
-        flippedCards = []; // Reset de flippedCards array
-      } else {
-        // De kaarten vormen geen match, draai beide kaarten weer om na een vertraging
-        setTimeout(() => {
-          flippedCards.forEach(card => {
-            card.classList.remove('flipped'); // Verwijder de "flipped" class van de kaarten
-          });
-          flippedCards = []; // Reset de flippedCards array
-        }, 1000);
-      }
-    }
+  this.classList.add('flip');
+
+  if (!flippedCard) {
+    flippedCard = true;
+    firstCard = this;
+    return;
+  }
+
+  secondCard = this;
+  checkMatch();
+}
+
+function checkMatch() {
+  let isMatch = firstCard.dataset.imgAlt === secondCard.dataset.imgAlt;
+  isMatch ? disableCards() : unflipCards();
+}
+
+function disableCards() {
+  firstCard.removeEventListener('click', flipCard);
+  secondCard.removeEventListener('click', flipCard);
+
+  firstCard.classList.add('match');
+  secondCard.classList.add('match');
+
+  resetBoard();
+}
+
+function unflipCards() {
+  lockBoard = true;
+
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+
+    resetBoard();
+  }, 1000);
+}
+
+function resetBoard() {
+  [flippedCard, lockBoard] = [false, false];
+  [firstCard, secondCard] = [null, null];
+}
+
+(function shuffle() {
+  cards.forEach(card => {
+    let randomPos = Math.floor(Math.random() * 24);
+    card.style.order = randomPos;
   });
+})();
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+document.querySelector('.resetButton').addEventListener('click', function() {
+  window.location.href = "index.html"; // Verwijs naar index.html
 });
