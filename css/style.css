@@ -41,9 +41,10 @@
   .scorebord {
     position: absolute;
     border: 1px solid black;
-    width: 500px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
     text-align: center;
+    left: 30px
   }
   
   .tiles div.card {
