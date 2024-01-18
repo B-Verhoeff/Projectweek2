@@ -4,22 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tought Track - Start</title>
-  <link rel="stylesheet" href="css/beginscherm.css">
+  <title>Thought Track</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="plaatjes/achterkant.jpg" type="image/x-icon">
 </head>
 <body>
-  <header class="titel">Tought Track</header>
+  <header class="titel">Thought Track</header>
   <main>
-    <div class="start">
-      <h1>Memory Spel</h1>
-      <p>Klik op "Start" om het spel te beginnen.</p>
-      <img src="plaatjes/achterkant.jpg" alt="" srcset="">
-      <br>
-      <button class="startButton">Start</button>
+    <div class="scorebord">
+      <div>
+        <h1>Scorebord</h1>
+      </div>
+      <div>
+        <h2>De score is</h2>
+      </div>
+      <div class="score">0</div>
     </div>
+    <div class="tiles">
+      <div class="card" data-id="0">
+        <img src="plaatjes/achterkant.jpg" alt="achterkant" class="front">
+      </div>
+      <!-- Andere kaarten hier... -->
+    </div>
+    <button class="resetButton">Reset</button>
   </main>
   <footer></footer>
-
-  <script src="javascript/beginscherm.js"></script>
+  <script src="javascript/main.js"></script>
 </body>
 </html>

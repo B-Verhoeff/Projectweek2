@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card');
   const cardImages = ["kaartjes/Acid.jpg", "kaartjes/AndrewTate.jpg", "kaartjes/ElonMusk.jpg", "kaartjes/Hamza.jpg", "kaartjes/Iman.jpg", "kaartjes/JesseJames.png", "kaartjes/JoeyAK.jpg", "kaartjes/JordanWelch.jpg", "kaartjes/KanyeKLAAR.jpg", "kaartjes/MrBeast.jpg", "kaartjes/TravisScott.jpg", "kaartjes/TristanTate.jpg"];
+  const backImage = "plaatjes/achterkant.jpg";
 
   let flippedCard = false;
   let lockBoard = false;
@@ -15,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function flipCard() {
     if (lockBoard || this === firstCard) return;
-    
+
     this.classList.add('flip');
-    
+
     if (!flippedCard) {
       flippedCard = true;
       firstCard = this;
@@ -87,7 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   cards.forEach(card => {
-      card.addEventListener('click', flipCard);
+    card.addEventListener('click', flipCard);
+    const img = card.querySelector('img.front');
+    img.src = backImage;
   });
 
   resetGame();
