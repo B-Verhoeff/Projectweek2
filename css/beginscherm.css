@@ -3,18 +3,18 @@
     box-sizing: border-box;
     padding: 0;
 }
-.titel{
-    text-align: center;
-    font-size: 90px;
-    
-}
+
 body{
     background-color: #DE3C4B 
 }
 .start{
     text-align: center;
 }
-.startButton{
-    width: 200px;
-    height: 50px; 
-}
+.logo{
+        width: 200px;
+        height: 0px; 
+        position: absolute;
+        top: 0%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+    }

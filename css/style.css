@@ -51,10 +51,12 @@
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.5s;
+    filter: brightness(1%);
   }
   
   .tiles div.card.flip {
     transform: rotateY(180deg);
+    filter: brightness(100%);
   }
   
   .tiles div.card.match {
