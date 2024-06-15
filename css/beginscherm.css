@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: #DE3C4B 
+    background-color: #DE3C4B;
 }
 .start{
     text-align: center;
@@ -18,3 +18,13 @@ body{
         left: 43%;
         transform: translate(-50%, -50%);
     }
+.startButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.startButton button {
+    padding: 20px;
+    font-size: 24px;
+}
